@@ -1,18 +1,18 @@
-import Content from "./content.mdx";
-import Image from "next/image";
-import SmallBanner from "@/public/banner-small.webp";
+import Content from './content.mdx'
+import Image from 'next/image'
+import SmallBanner from '@/public/banner-small.webp'
 
 export default function Tentang() {
   return (
-    <main className="container mx-auto p-4 xl:px-32 mt-2 xl:mt-16 mb-24">
+    <main className='container mx-auto mb-24 mt-2 p-4 xl:mt-16 xl:px-32'>
       <Image
         src={SmallBanner}
-        alt="Organizer"
-        className="w-full object-cover container mx-auto pb-12"
+        alt='Organizer'
+        className='container mx-auto w-full object-cover pb-12'
       />
-      <article className="prose xl:prose-xl max-w-none">
+      <article className='prose max-w-none xl:prose-xl'>
         <Content />
       </article>
     </main>
-  );
+  )
 }
