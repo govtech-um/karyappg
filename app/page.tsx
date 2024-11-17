@@ -1,101 +1,178 @@
+import Link from "next/link";
 import Image from "next/image";
+import ProductCategoryCards from "@/components/organism/productCategoryCards";
 
-export default function Home() {
+const SHEETS = `jenis-karya`;
+const DATA_ENDPOINT = `${process.env.SPREADSHEET_ENDPOINT}/${SHEETS}?key=${process.env.GAPI_SPREADSHEETS}&majorDimension=COLUMNS`;
+
+type ProductCategory = {
+  title: string;
+  desc: string;
+  link: string;
+  category: string;
+  image: string;
+};
+
+export default async function Home() {
+  const content: ProductCategory[] = [];
+  await fetch(DATA_ENDPOINT)
+    .then((response) => response.json())
+    .then((json) => {
+      const data = json.values;
+      const title = data[0];
+      const desc = data[1];
+      const link = data[2];
+      const category = data[3];
+      const image = data[4];
+
+      for (let i = 1; i < data[0].length; i += 1) {
+        const item = {
+          title: title[i],
+          desc: desc[i],
+          link: link[i],
+          category: category[i],
+          image: image[i],
+        };
+        content.push(item);
+      }
+    });
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main>
+      <HeroBanner />
+      <main>
+        <section id="main-content" className="container mx-auto px-4 py-12">
+          {/* Produk Mahasiswa */}
+          <div id="produk-mahasiswa" className="mb-8">
+            <h2 className="text-xl 2xl:text-4xl text-blue-800 font-bold">
+              Produk Tridarma Mahasiswa PPG
+            </h2>
+            <div className="grid grid-cols-4 gap-4 mt-8">
+              {content
+                .filter((item) => item.category === "mahasiswa")
+                .map((item) => (
+                  <ProductCategoryCards
+                    key={item.link}
+                    title={item.title}
+                    description={item.desc}
+                    image={item.image}
+                    link={item.link}
+                  />
+                ))}
+            </div>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+          {/* Produk Penelitian */}
+          <div id="produk-mahasiswa" className="mb-8">
+            <h2 className="text-xl 2xl:text-4xl text-blue-800 font-bold">
+              Produk Penelitian PPG
+            </h2>
+            <div className="grid grid-cols-3 gap-4 mt-8">
+              {content
+                .filter((item) => item.category === "penelitian")
+                .map((item) => (
+                  <ProductCategoryCards
+                    key={item.link}
+                    title={item.title}
+                    description={item.desc}
+                    image={item.image}
+                    link={item.link}
+                  />
+                ))}
+            </div>
+          </div>
+
+          {/* Produk Penelitian */}
+          <div id="produk-mahasiswa" className="mb-8">
+            <h2 className="text-xl 2xl:text-4xl text-blue-800 font-bold">
+              Produk Pengabdian PPG
+            </h2>
+            <div className="grid grid-cols-3 gap-4 mt-8">
+              {content
+                .filter((item) => item.category === "pengabdian")
+                .map((item) => (
+                  <ProductCategoryCards
+                    key={item.link}
+                    title={item.title}
+                    description={item.desc}
+                    image={item.image}
+                    link={item.link}
+                  />
+                ))}
+            </div>
+          </div>
+
+          {/* End Produk */}
+          {/* <Image
+            className="lg:mt-10"
+            src={ImageProudly}
+            alt="Mempersembahkan"
+          /> */}
+          {/* <Image src={divider} alt="" height={50} className="w-full" /> */}
+          {/* <GeneralInformation listpost={posts} /> */}
+          {/* <Image src={divider} alt="" height={50} className="w-full" /> */}
+          {/* <Image src={divider} alt="" height={50} className="w-full" /> */}
+          {/* <Image src={informasiFungsiMedia} alt="informasi fungsi media" /> */}
+          {/* <Image
+            src={ImageTEPFestiva}
+            alt="TEP Festiva"
+            className="lg:py-8 xl:hidden 2xl:block"
+          /> */}
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+    </main>
+  );
+}
+
+function HeroBanner() {
+  return (
+    <section id="hero-banner" className="relative hidden lg:block">
+      <img
+        src="/hero-banner.webp"
+        alt="Welcome Hero Header"
+        className="h-screen max-h-screen w-full object-cover origin-right"
+      />
+      <div id="hero-content" className="absolute bottom-10 w-full">
+        <div className="flex max-w-2xl flex-col items-start justify-start space-y-4 pt-32 lg:p-12">
+          <h1 className="bg-blue-400 p-3 text-4xl font-bold text-black">
+            Produk Tridarma Pendidikan Profesi Guru (PPG) Sekolah Pascasarjana
+            UM
+          </h1>
+          <p className="line-clamp-4 hidden bg-green-700 p-3 text-base text-white lg:line-clamp-none lg:block">
+            Selamat datang di Produk Tridarma Pendidikan Profesi Guru (PPG).
+          </p>
+          {/* <Link
+              href={"/ppg/"}
+              className="line-clamp-4 hidden bg-yellow-400 p-3 text-base text-black lg:line-clamp-none lg:block transition ease-in-out duration-500 hover:scale-110"
+            >
+              Daftar Produk Tridarma Mahasiswa PPG
+            </Link>
+            <Link
+              href={"/ppm/penelitian"}
+              className="line-clamp-4 hidden bg-yellow-400 p-3 text-base text-black lg:line-clamp-none lg:block transition ease-in-out duration-500 hover:scale-110"
+            >
+              Daftar Luaran Penelitian PPG
+            </Link>
+            <Link
+              href={"/ppm/pengabdian"}
+              className="line-clamp-4 hidden bg-yellow-400 p-3 text-base text-black lg:line-clamp-none lg:block transition ease-in-out duration-500 hover:scale-110"
+            >
+              Daftar Luaran Pengabdian PPG
+            </Link> */}
+        </div>
+      </div>
+      <div
+        id="hero-bottomline"
+        className="absolute bottom-0 flex w-full items-center justify-center bg-yellow-400"
+      >
+        <Link
+          href="#thematic-content"
+          className="p-2 text-center text-lg font-bold text-black underline hover:text-white focus:text-white"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          Explorasi Produk Tridarma Pendidikan Profesi Guru (PPG) Universitas
+          Negeri Malang
+        </Link>
+      </div>
+    </section>
   );
 }
