@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import ProductCategoryCards from "@/components/organism/productCategoryCards";
+import OrganizerImage from "@/public/banner-organizer.webp";
+import SmallBanner from "@/public/banner-small.webp";
 
 const SHEETS = `jenis-karya`;
 const DATA_ENDPOINT = `${process.env.SPREADSHEET_ENDPOINT}/${SHEETS}?key=${process.env.GAPI_SPREADSHEETS}&majorDimension=COLUMNS`;
@@ -47,7 +49,7 @@ export default async function Home() {
             <h2 className="text-xl 2xl:text-4xl text-blue-800 font-bold">
               Produk Tridarma Mahasiswa PPG
             </h2>
-            <div className="grid grid-cols-4 gap-4 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
               {content
                 .filter((item) => item.category === "mahasiswa")
                 .map((item) => (
@@ -62,12 +64,18 @@ export default async function Home() {
             </div>
           </div>
 
+          <Image
+            src={SmallBanner}
+            alt="Organizer"
+            className="w-full object-cover container mx-auto pb-12"
+          />
+
           {/* Produk Penelitian */}
           <div id="produk-mahasiswa" className="mb-8">
             <h2 className="text-xl 2xl:text-4xl text-blue-800 font-bold">
               Produk Penelitian PPG
             </h2>
-            <div className="grid grid-cols-3 gap-4 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
               {content
                 .filter((item) => item.category === "penelitian")
                 .map((item) => (
@@ -87,7 +95,7 @@ export default async function Home() {
             <h2 className="text-xl 2xl:text-4xl text-blue-800 font-bold">
               Produk Pengabdian PPG
             </h2>
-            <div className="grid grid-cols-3 gap-4 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
               {content
                 .filter((item) => item.category === "pengabdian")
                 .map((item) => (
@@ -102,22 +110,11 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* End Produk */}
-          {/* <Image
-            className="lg:mt-10"
-            src={ImageProudly}
-            alt="Mempersembahkan"
-          /> */}
-          {/* <Image src={divider} alt="" height={50} className="w-full" /> */}
-          {/* <GeneralInformation listpost={posts} /> */}
-          {/* <Image src={divider} alt="" height={50} className="w-full" /> */}
-          {/* <Image src={divider} alt="" height={50} className="w-full" /> */}
-          {/* <Image src={informasiFungsiMedia} alt="informasi fungsi media" /> */}
-          {/* <Image
-            src={ImageTEPFestiva}
-            alt="TEP Festiva"
-            className="lg:py-8 xl:hidden 2xl:block"
-          /> */}
+          <Image
+            src={OrganizerImage}
+            alt="Organizer"
+            className="w-full object-cover container mx-auto py-12"
+          />
         </section>
       </main>
     </main>
@@ -130,7 +127,7 @@ function HeroBanner() {
       <img
         src="/hero-banner.webp"
         alt="Welcome Hero Header"
-        className="h-screen max-h-screen w-full object-cover origin-right"
+        className="h-screen max-h-screen w-full object-cover object-right-bottom"
       />
       <div id="hero-content" className="absolute bottom-10 w-full">
         <div className="flex max-w-2xl flex-col items-start justify-start space-y-4 pt-32 lg:p-12">
