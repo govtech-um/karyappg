@@ -10,7 +10,7 @@ import Link from 'next/link'
 type ProductCategoryCardsProps = {
   title: string
   description: string
-  image: string
+  image?: string
   link: string
 }
 
