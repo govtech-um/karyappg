@@ -14,51 +14,79 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { usePathname } from 'next/navigation'
+import { title } from 'process'
 
 // Header component
 const ProdukMahasiswaPPG = [
   {
     title: 'Artikel Ilmiah',
-    url: 'ppg/artikel',
+    url: '/ppg/artikel',
     description:
       'Artikel ilmiah yang diterbitkan di jurnal nasional dan internasional',
   },
   {
     title: 'Media Pembelajaran',
-    url: 'ppg/media',
+    url: '/ppg/media',
     description: 'Media pembelajaran fisik dan digital yang dikembangkan',
   },
   {
     title: 'Prestasi Mahasiswa',
-    url: 'ppg/prestasi',
+    url: '/ppg/prestasi',
     description:
       'Prestasi yang diraih oleh mahasiswa PPG Universitas Negeri Malang',
+  },
+  {
+    title: 'Katalog Karya',
+    url: '/ppg/katalog',
+    description: 'Katalog karya mahasiswa PPG Universitas Negeri Malang',
   },
 ]
 
 const LuaranPenelitian = [
   {
     title: 'Hak Kekayaan Intelektual (HKI)',
-    url: 'ppm/penelitian/hki',
+    url: '/ppm/penelitian/hki',
     description: 'Hak kekayaan intelektual yang dihasilkan dari penelitian',
   },
   {
     title: 'Publikasi Media Massa',
-    url: 'ppm/penelitian/pressrelease',
+    url: '/ppm/penelitian/pressrelease',
     description: 'Press release penelitian yang diterbitkan di media massa',
+  },
+  {
+    title: 'Poster Penelitian',
+    url: '/ppm/penelitian/poster',
+    description: 'Poster penelitian yang dihasilkan dari penelitian',
+  },
+  {
+    title: 'Artikel Ilmiah',
+    url: '/ppm/penelitian/artikel',
+    description:
+      'Artikel ilmiah yang diterbitkan di jurnal nasional dan internasional',
   },
 ]
 
 const LuaranPengabdian = [
   {
     title: 'Hak Kekayaan Intelektual (HKI)',
-    url: 'ppm/pengabdian/hki',
+    url: '/ppm/pengabdian/hki',
     description: 'Hak kekayaan intelektual yang dihasilkan dari penelitian',
   },
   {
     title: 'Publikasi Media Massa',
-    url: 'ppm/pengabdian/pressrelease',
+    url: '/ppm/pengabdian/pressrelease',
     description: 'Press release penelitian yang diterbitkan di media massa',
+  },
+  {
+    title: 'Poster Pengabdian',
+    url: '/ppm/pengabdian/poster',
+    description: 'Poster pengabdian yang dihasilkan dari pengabdian',
+  },
+  {
+    title: 'Artikel Ilmiah',
+    url: '/ppm/pengabdian/artikel',
+    description:
+      'Artikel ilmiah yang diterbitkan di jurnal nasional dan internasional',
   },
 ]
 
@@ -159,7 +187,6 @@ const ListItem = React.forwardRef<
     <li>
       <NavigationMenuLink asChild>
         <a
-          ref={ref}
           className={cn(
             'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
             className,
