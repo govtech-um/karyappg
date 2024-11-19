@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack -p 80",
+    "dev": "next dev --turbopack -p 3000 --experimental-https --experimental-https-key ./certificates/rover-digital-key.pem --experimental-https-cert ./certificates/rover-digital.pem",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "type-check": "tsc --noEmit",
-    "serve:basic": "http-server out"
+    "serve:basic": "http-server out",
+    "clean": "powershell Remove-Item -Recurse -Force .next, out",
+    "docker:build": "docker build -t govtech-um/karyappg .",
+    "docker:run": "docker run -p 80:80 govtech-um/karyappg"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
