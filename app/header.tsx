@@ -14,7 +14,6 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import { usePathname } from 'next/navigation'
-import { title } from 'process'
 
 // Header component
 const ProdukMahasiswaPPG = [
@@ -182,7 +181,7 @@ export function Header() {
 const ListItem = React.forwardRef<
   React.ElementRef<'a'>,
   React.ComponentPropsWithoutRef<'a'>
->(({ className, title, children, ...props }, ref) => {
+>(({ className, title, children, ...props }) => {
   return (
     <li>
       <NavigationMenuLink asChild>

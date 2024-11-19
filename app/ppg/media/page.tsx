@@ -1,6 +1,5 @@
 import * as React from 'react'
 import Link from 'next/link'
-import { GetStaticProps } from 'next'
 import Image from 'next/image'
 
 type Photo = {
@@ -13,13 +12,6 @@ type Photo = {
   height: string
   src: string
   description: string
-}
-
-const toProperCase = (str: string) => {
-  return str.replace(
-    /\w\S*/g,
-    (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
-  )
 }
 
 const SHEETS = 'ppg-media'

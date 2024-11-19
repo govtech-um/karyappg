@@ -15,13 +15,6 @@ type Photo = {
   description: string
 }
 
-const toProperCase = (str: string) => {
-  return str.replace(
-    /\w\S*/g,
-    (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
-  )
-}
-
 const SHEETS = 'ppg-prestasi'
 const DATA_ENDPOINT = `${process.env.SPREADSHEET_ENDPOINT}/${SHEETS}?key=${process.env.GAPI_SPREADSHEETS}&majorDimension=COLUMNS`
 
