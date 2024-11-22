@@ -65,30 +65,6 @@ const LuaranPenelitian = [
   },
 ]
 
-const LuaranPengabdian = [
-  {
-    title: 'Hak Kekayaan Intelektual (HKI)',
-    url: '/ppm/pengabdian/hki',
-    description: 'Hak kekayaan intelektual yang dihasilkan dari penelitian',
-  },
-  {
-    title: 'Publikasi Media Massa',
-    url: '/ppm/pengabdian/pressrelease',
-    description: 'Press release penelitian yang diterbitkan di media massa',
-  },
-  {
-    title: 'Poster Pengabdian',
-    url: '/ppm/pengabdian/poster',
-    description: 'Poster pengabdian yang dihasilkan dari pengabdian',
-  },
-  {
-    title: 'Artikel Ilmiah',
-    url: '/ppm/pengabdian/artikel',
-    description:
-      'Artikel ilmiah yang diterbitkan di jurnal nasional dan internasional',
-  },
-]
-
 export function Header() {
   const path = usePathname()
   const isRoot = path === '/'
@@ -155,7 +131,7 @@ export function Header() {
             </NavigationMenuItem>
 
             {/* Luaran Pengabdian */}
-            <NavigationMenuItem>
+            {/* <NavigationMenuItem>
               <NavigationMenuTrigger className={navigationMenuTriggerStyle()}>
                 Pengabdian
               </NavigationMenuTrigger>
@@ -168,7 +144,7 @@ export function Header() {
                   ))}
                 </ul>
               </NavigationMenuContent>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
 
             {/* End */}
           </NavigationMenuList>

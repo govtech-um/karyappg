@@ -91,8 +91,8 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* Produk Penelitian */}
-          <div id='produk-mahasiswa' className='mb-8'>
+          {/* Produk Pengabdian */}
+          {/* <div id='produk-mahasiswa' className='mb-8'>
             <h2 className='text-xl font-bold text-blue-800 2xl:text-4xl'>
               Produk Pengabdian PPG
             </h2>
@@ -109,7 +109,7 @@ export default async function Home() {
                   />
                 ))}
             </div>
-          </div>
+          </div> */}
 
           <Image
             src={OrganizerImage}
