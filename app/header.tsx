@@ -36,7 +36,7 @@ const ProdukMahasiswaPPG = [
   },
   {
     title: 'Katalog Karya',
-    url: '/ppg/katalog',
+    url: '/ppg',
     description: 'Katalog karya mahasiswa PPG Universitas Negeri Malang',
   },
 ]

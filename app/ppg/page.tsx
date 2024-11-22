@@ -1,12 +1,10 @@
-import React from 'react'
-
-export default function Catalogue() {
+export default function Page() {
   return (
-    <div className='container mx-auto my-4 px-2'>
-      <h1 className='py-8 text-center text-7xl font-bold text-blue-950'>
-        Katalog Karya Mahasiswa
+    <main className='container mx-auto px-4 py-8'>
+      <h1 className='text-center text-lg font-bold text-blue-900 xl:text-4xl'>
+        Produk Tridarma Mahasiswa PPG
       </h1>
-      <div className='grid grid-cols-2 space-x-4'>
+      <div className='mt-8 grid grid-cols-2 space-x-4'>
         <iframe
           src='https://drive.google.com/file/d/1SatCPyQHHVHeAAO7WSMfb41pXiAlYKxs/preview'
           width='1280'
@@ -23,6 +21,6 @@ export default function Catalogue() {
           className='w-full items-center justify-center'
         ></iframe>
       </div>
-    </div>
+    </main>
   )
 }
