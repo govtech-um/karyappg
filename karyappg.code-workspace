@@ -1,8 +1,26 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "name": "root",
+      "path": ".",
+    },
+    {
+      "name": "frontend-app",
+      "path": "./apps/frontend",
+    },
+    {
+      "name": "backend-api",
+      "path": "./apps/backend",
+    },
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+    },
+  },
 }
